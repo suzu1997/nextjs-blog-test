@@ -10,7 +10,7 @@ export const Auth: FC = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   // trueならログインモード,falseなら新規登録モード
-  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [isLogin, setIsLogin] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
 
   const login = async () => {
@@ -29,8 +29,8 @@ export const Auth: FC = () => {
         cookie.set('access_token', res.data.access, options);
         router.push('/');
       }
-    } catch (error) {
-      setError(error.message);
+    } catch {
+      setError('Login Error');
     }
   };
 
